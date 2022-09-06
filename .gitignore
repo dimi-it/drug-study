@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+
+# misc
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+server/testReq.http
+server/-- SQLite.sql
+server/-- SQLite copy.sql
+server/generateDb.js
