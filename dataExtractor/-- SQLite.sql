@@ -1,0 +1,15 @@
+-- SQLite
+DROP TABLE games
+
+CREATE TABLE games
+(game TEXT PRIMARY KEY NOT NULL,
+round INTEGER NOT NULL)
+
+DROP TABLE results
+
+CREATE TABLE results
+(game TEXT NOT NULL,
+round INTEGER NOT NULL,
+drugId INTEGER NOT NULL,
+failed INTEGER NOT NULL,
+PRIMARY KEY(game, round, drugId))

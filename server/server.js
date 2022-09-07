@@ -62,12 +62,18 @@ app.get('/api/drugs/name/:name/image.png', (req, res) => {
 })
 
 //get random drug
-app.get('/api/drugs/game/:type', async (req, res) => {
+app.get('/api/drugs/game/:game', async (req, res) => {
     try {
-        const count = await dao.getDrugsCount();
-        const id = getRandomInt(count.count) + 1;
-        const drug = await dao.getDrugById(id);
-        res.json(drug)
+        const round = await dao.getRoundForGame(req.params.game);
+        if (round.error) {
+            res.status(404).json(result);
+        }
+        const drugs = await dao.getListIdDrugsToPlay(req.params.game, round);
+        if (drugs.error) {
+            res.status(404).json(result);
+        }
+        const i = getRandomInt(drugs.length)
+        res.json(drugs[i]);
     } catch (err) {
         console.log(err);
         res.send(err);
