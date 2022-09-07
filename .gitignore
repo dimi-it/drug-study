@@ -10,3 +10,5 @@ server/testReq.http
 server/-- SQLite.sql
 server/-- SQLite copy.sql
 server/generateDb.js
+
+dataExtractor/images
