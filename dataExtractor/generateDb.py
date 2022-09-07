@@ -18,7 +18,7 @@ for d in data["results"]:
     if(not d["found"]):
         notFoundList.append(d["name"])
         continue
-    cur.execute("INSERT INTO drug(name, secondName) VALUES(?, ?)", (d["name"], d["secondName"]))
+    cur.execute("INSERT INTO drugs(name, secondName, category) VALUES(?, ?, ?)", (d["name"], d["secondName"], d["category"]))
     db.commit()
 
 print(notFoundList)

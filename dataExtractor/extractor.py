@@ -10,27 +10,76 @@ mainUrl = "https://go.drugbank.com"
 searchUrl = "/unearth/q?searcher=drugs&query="
 mainFile = "results.json"
 
-nameList = ["salbutamolo","indacaterolo","propranololo","eroina"]
+nameList = [("SALBUTAMOLO",	"RECETTORI BETA ENERGICI"),
+("INDACATEROLO",	"RECETTORI BETA ENERGICI"),
+("PROPRANOLOLO",	"RECETTORI BETA ENERGICI"),
+("ATENOLOLO",	"RECETTORI BETA ENERGICI"),
+("MISOPROSTOLO",	"INFIAMMATORI"),
+("PARACETAMOLO",	"INFIAMMATORI"),
+("ACIDO SALICILICO",	"INFIAMMATORI"),
+("ASPIRINA",	"INFIAMMATORI"),
+("CORTISOLO",	"INFIAMMATORI"),
+("BETAMETASONE",	"INFIAMMATORI"),
+("ISTAMINA",	"ANTISTAMINICI"),
+("DIFENILDRAMINA",	"ANTISTAMINICI"),
+("DOXEPINA",	"ANTISTAMINICI"),
+("CETIRIZINA",	"ANTISTAMINICI"),
+("FUROSEMIDE",	"DIURETICI"),
+("BENZOTIADIAZINE",	"DIURETICI"),
+("IDROCLOROTIAZIDE",	"DIURETICI"),
+("ESTRADIOLO",	"STEROIDI ANABOLIZZANTI - ORMONI"),
+("PROGESTERONE",	"STEROIDI ANABOLIZZANTI - ORMONI"),
+("TESTOSTERONE",	"STEROIDI ANABOLIZZANTI - ORMONI"),
+("EPITESTOSTERONE",	"STEROIDI ANABOLIZZANTI - ORMONI"),
+("NANDROLONE",	"STEROIDI ANABOLIZZANTI - ORMONI"),
+("SOSTANOZOLOLO",	"STEROIDI ANABOLIZZANTI - ORMONI"),
+("BENZODIAZEPINE",	"ANSIOLITICI"),
+("SEROTONINA",	"PSICOTOMIMETICI"),
+("PSILOCINA",	"PSICOTOMIMETICI"),
+("LSD",	"PSICOTOMIMETICI"),
+("DOM",	"PSICOTOMIMETICI"),
+("GLUTAMMATO",	"PSICOTOMIMETICI"),
+("KETAMINA",	"PSICOTOMIMETICI"),
+("DOPAMINA",	"STIMOLANTI"),
+("ADRENALINA",	"STIMOLANTI"),
+("NORADRENALINA",	"STIMOLANTI"),
+("AMFETAMINA",	"STIMOLANTI"),
+("EFEDRINA",	"STIMOLANTI"),
+("COCAINA",	"STIMOLANTI"),
+("ADENOSINA",	"STIMOLANTI"),
+("CAFFEINA",	"STIMOLANTI"),
+("MORFINA",	"NARCOTICI ANALGESICI"),
+("CODEINA",	"NARCOTICI ANALGESICI"),
+("EROINA",	"NARCOTICI ANALGESICI"),
+("METADONE", "NARCOTICI ANALGESICI"),
+("ISOPROTENEROLO", ""),
+("FENOXIBENZAMMINA", ""),
+("DOXORUBRICINA", "")]
 outList = []
 
 driver = webdriver.Firefox(executable_path="./geckodriver")
 
-for name in nameList:
-    driver.get(mainUrl + searchUrl + name)
+for item in nameList:
+    driver.get(mainUrl + searchUrl + item[0])
     sleep(t)
     if(driver.find_elements(By.CLASS_NAME, "drug-content")):
         title = driver.find_element(By.XPATH, "/html/body/main/div/div/div[2]/div[1]/h1").text
-        imageUrl = driver.find_element(By.XPATH, "/html/body/main/div/div/div[2]/div[2]/dl[1]/dd[8]/div[1]/a/img").click()
+        try:
+            imageElement = driver.find_element(By.CLASS_NAME, "moldbi-vector-thumbnail").click()
+        except:
+            outList.append({"name":item[0], "secondName":"", "category":item[1], "found":False})
+            print(item[0], "not found")
+            continue
         sleep(t)
-        fileName = name + ".png"
+        fileName = item[0] + ".png"
         fileName = "./images/" + fileName
         driver.save_screenshot(fileName)
         sleep(t)
-        print(name, title)
-        outList.append({"name":name, "secondName":title, "found":True})
+        print(item[0], title)
+        outList.append({"name":item[0], "secondName":title, "category":item[1], "found":True})
     else:
-        outList.append({"name":name, "secondName":"", "found":False})
-        print(name, "not found")
+        outList.append({"name":item[0], "secondName":"", "category":item[1], "found":False})
+        print(item[0], "not found")
 
 driver.close()
 
