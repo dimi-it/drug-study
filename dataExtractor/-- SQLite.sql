@@ -7,6 +7,8 @@ round INTEGER NOT NULL)
 
 DROP TABLE results
 
+DELETE FROM games
+
 CREATE TABLE results
 (game TEXT NOT NULL,
 round INTEGER NOT NULL,

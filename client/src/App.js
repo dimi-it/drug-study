@@ -1,11 +1,23 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { BrowserRouter as Router, useNavigate, Route, Routes } from "react-router-dom";
+import Card from './Card';
+import Home from './Home';
+import Layout from './Layout';
+import Game from './Game';
+import Results from './Results';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path='game/*' element={<Game/>}/>
+          <Route path='results/*' element={<Results/>}/>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

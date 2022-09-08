@@ -33,9 +33,42 @@ app.get('/api/drugs', async (req, res) => {
     }
 })
 
+app.get('/api/drugs/count', async (req, res) => {
+    try {
+        const result = await dao.getDrugsCount();
+        if (result.error) {
+            res.status(404).json(result);
+        }
+        else {
+            res.json(result);
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.json(err);
+    }
+})
+
+
 app.get('/api/drugs/name/:name', async (req, res) => {
     try {
         const result = await dao.getDrugByName(req.params.name);
+        if (result.error) {
+            res.status(404).json(result);
+        }
+        else {
+            res.json(result);
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.json(err);
+    }
+})
+
+app.get('/api/drugs/id/:id', async (req, res) => {
+    try {
+        const result = await dao.getDrugById(req.params.id);
         if (result.error) {
             res.status(404).json(result);
         }
@@ -64,19 +97,99 @@ app.get('/api/drugs/name/:name/image.png', (req, res) => {
 //get random drug
 app.get('/api/drugs/game/:game', async (req, res) => {
     try {
-        const round = await dao.getRoundForGame(req.params.game);
-        if (round.error) {
-            res.status(404).json(result);
+        let drugs;
+        while(true){
+            const round = await dao.getRoundForGame(req.params.game);
+            if (round.error) {
+                res.status(404).json(result);
+            }
+            drugs = await dao.getListDrugsToPlay(req.params.game, round);
+            if (drugs.error) {
+                res.status(404).json(result);
+            }
+            if(drugs.length == 0){
+                await dao.updateRound(req.params.game, round + 1);
+                res.json({end:true, oldRound:round})
+                return;
+            }
+            else{
+                break;
+            }
         }
-        const drugs = await dao.getListIdDrugsToPlay(req.params.game, round);
-        if (drugs.error) {
-            res.status(404).json(result);
-        }
-        const i = getRandomInt(drugs.length)
+        console.log(drugs.length);
+        const i = getRandomInt(drugs.length);
         res.json(drugs[i]);
     } catch (err) {
         console.log(err);
         res.send(err);
+    }
+})
+
+//set play result
+app.post('/api/drugs/game/:game', async (req, res) => {
+    try {
+        const round = await dao.getRoundForGame(req.params.game);
+        if (round.error) {
+            res.status(404).json(result);
+        }
+        await dao.setNewResult({
+            game:req.params.game, 
+            round:round, 
+            id:req.body.drug.id, 
+            failed:req.body.failed});
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.send(err);
+    }
+})
+
+//get round for game
+app.get('/api/drugs/round/:game', async (req, res) => {
+    try {
+        const result = await dao.getRoundForGame(req.params.game);
+        if (result.error) {
+            res.status(404).json(result);
+        }
+        else {
+            res.json(result);
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.json(err);
+    }
+})
+
+app.get('/api/drugs/results/:game', async (req, res) => {
+    try {
+        const result = await dao.getResultsForGame(req.params.game);
+        if (result.error) {
+            res.status(404).json(result);
+        }
+        else {
+            res.json(result);
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.json(err);
+    }
+})
+
+app.get('/api/drugs/results/:game/:round', async (req, res) => {
+    try {
+        const result = await dao.getResultsForGameAndRound(req.params.game, req.params.round);
+        if (result.error) {
+            res.status(404).json(result);
+        }
+        else {
+            res.json(result);
+        }
+    }
+    catch (err) {
+        console.log(err);
+        res.json(err);
     }
 })
 

@@ -3,61 +3,61 @@
        {
           "name":"SALBUTAMOLO",
           "secondName":"Salbutamol",
-          "category":"RECETTORI BETA ENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI",
           "found":true
        },
        {
           "name":"INDACATEROLO",
           "secondName":"Indacaterol",
-          "category":"RECETTORI BETA ENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI",
           "found":true
        },
        {
           "name":"PROPRANOLOLO",
           "secondName":"Propranolol",
-          "category":"RECETTORI BETA ENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI",
           "found":true
        },
        {
           "name":"ATENOLOLO",
           "secondName":"Atenolol",
-          "category":"RECETTORI BETA ENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI",
           "found":true
        },
        {
           "name":"MISOPROSTOLO",
           "secondName":"Misoprostol",
-          "category":"INFIAMMATORI",
+          "category":"ANTINFIAMMATORI",
           "found":true
        },
        {
           "name":"PARACETAMOLO",
           "secondName":"Acetaminophen",
-          "category":"INFIAMMATORI",
+          "category":"ANTINFIAMMATORI",
           "found":true
        },
        {
           "name":"ACIDO SALICILICO",
           "secondName":"Salicylic acid",
-          "category":"INFIAMMATORI",
+          "category":"ANTINFIAMMATORI",
           "found":true
        },
        {
           "name":"ASPIRINA",
-          "secondName":"Salicylic acid",
-          "category":"INFIAMMATORI",
+          "secondName":"Aspirin",
+          "category":"ANTINFIAMMATORI",
           "found":true
        },
        {
           "name":"CORTISOLO",
           "secondName":"Hydrocortisone",
-          "category":"INFIAMMATORI",
+          "category":"ANTINFIAMMATORI",
           "found":true
        },
        {
           "name":"BETAMETASONE",
           "secondName":"Betamethasone",
-          "category":"INFIAMMATORI",
+          "category":"ANTINFIAMMATORI",
           "found":true
        },
        {
@@ -143,6 +143,12 @@
           "secondName":"1,2-Benzodiazepine",
           "category":"ANSIOLITICI",
           "found":true
+       },
+       {
+         "name":"DIAZEPAM",
+         "secondName":"Diazepam",
+         "category":"",
+         "found":true
        },
        {
           "name":"SEROTONINA",
@@ -269,6 +275,12 @@
           "secondName":"Doxorubicin",
           "category":"",
           "found":true
-       }
+       },
+       {
+         "name":"WARFARINA",
+         "secondName":"Warfarin",
+         "category":"",
+         "found":true
+      }
     ]
  }
