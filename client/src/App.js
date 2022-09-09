@@ -6,6 +6,7 @@ import Home from './Home';
 import Layout from './Layout';
 import Game from './Game';
 import Results from './Results';
+import CardList from './CardsList';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path='game/*' element={<Game/>}/>
           <Route path='results/*' element={<Results/>}/>
+          <Route path='list/' element={<CardList/>}/>
         </Route>
       </Routes>
     </Router>

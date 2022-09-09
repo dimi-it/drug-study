@@ -17,7 +17,7 @@ function GamePage(props) {
 
     return (
         <>
-            <h2>You want to play the results by:</h2>
+            <h2>You want to play by:</h2>
             <Row>
                 <Button className='m-2' variant="info" onClick={() => navigate("name")}>Name</Button>
                 <Button className='m-2' variant="info" onClick={() => navigate("struct")}>Struct</Button>

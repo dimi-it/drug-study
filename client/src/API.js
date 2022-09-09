@@ -1,5 +1,21 @@
 const APIURL = new URL('http://localhost:3001/api/');
 
+async function getDrugs() {
+    return new Promise((resolve, reject) => {
+        fetch(new URL(`drugs/`, APIURL), {
+            method: 'GET'
+        }).then((response) => {
+            if (response.ok) {
+                resolve(response.json());
+            } else {
+                response.json()
+                    .then((obj) => { reject(obj); })
+                    .catch(() => { reject({ error: "Cannot parse server response." }) });
+            }
+        }).catch(() => { reject({ error: "Cannot communicate with the server." }) });
+    });
+}
+
 async function getDrugByName(name) {
     return new Promise((resolve, reject) => {
         fetch(new URL(`drugs/name/${name}/`, APIURL), {
@@ -136,5 +152,5 @@ function getImageUrl(name) {
     return new URL(`drugs/name/${name}/image.png`, APIURL);
 }
 
-const API = { getDrugByName, getDrugById, getDrugCount, getDrugToPlay, getResultsByGame, getResultsByGameAndRound, getRoundForGame, getImageUrl, setResultForGame }
+const API = { getDrugs, getDrugByName, getDrugById, getDrugCount, getDrugToPlay, getResultsByGame, getResultsByGameAndRound, getRoundForGame, getImageUrl, setResultForGame }
 export default API

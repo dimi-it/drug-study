@@ -12,6 +12,7 @@ function Layout(props) {
             </Row>
             <Row className='mb-3'>
                 <Button className='mt-1' onClick={() => navigate("/")}>Home</Button>
+                <Button className='mt-1' onClick={() => navigate("/list")}>Card list</Button>
                 <Button className='mt-1' onClick={() => navigate("/game")}>Play</Button>
                 <Button className='mt-1' onClick={() => navigate("/results")}>Results</Button>
             </Row>

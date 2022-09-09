@@ -53,7 +53,7 @@ function Card(props) {
 
     return (
         <>
-            {drug !== null && end === false && endRound === false ? <CardPlay game={props.game} name={drug.name} setEnd={setEnd} /> : false}
+            {drug !== null && end === false && endRound === false ? <CardPlay game={props.game} name={drug.name} setEnd={setEnd} sendResult={sendResult}/> : false}
             {end === true && endRound === false ? <CardEnd drug={drug} sendResult={sendResult} /> : false}
             {endRound === true ? <EndRound round={round} handleUpdate={handleUpdate} /> : false}
             <Row>
@@ -63,7 +63,7 @@ function Card(props) {
     )
 }
 
-//game, name, end
+//game, name, end, sendResult
 function CardPlay(props) {
     return (
         <>
@@ -73,6 +73,7 @@ function CardPlay(props) {
             }
             <Row>
                 <Button className="m-2" onClick={() => props.setEnd(true)}>Verify</Button>
+                <Button className="m-2" variant="secondary" onClick={() => props.sendResult(true)}>Draw</Button>
             </Row>
         </>
     )

@@ -172,7 +172,7 @@ function RoundCompletion(props) {
 //results
 function ResultsTableByGameAndRound(props) {
     return (
-        <Table>
+        <Table hover>
             <thead>
                 <tr>
                     <td className="h5">Name</td>
@@ -192,11 +192,30 @@ function ResultsTableByGameAndRound(props) {
 
 //result
 function ResultsTableByGameAndRoundRow(props) {
+    const [showDetails, setShowDetails] = useState(false);
+
+    const handleClick = () => {
+        setShowDetails(d => !d);
+    }
+
     return (
-        <tr className={props.result.failed ? 'table-danger' : 'table-success'}>
-            <td>{props.result.name}</td>
+        <tr onClick={handleClick} className={props.result.failed ? 'table-danger' : 'table-success'}>
+            <td>
+                {props.result.name}             
+                {showDetails ? <ImageDetails name={props.result.name}/>: false}          
+            </td>
             <td>{props.result.category}</td>
         </tr>
+    )
+}
+
+//name
+function ImageDetails(props){
+    return(
+        <>
+            <br/>
+            <img src={API.getImageUrl(props.name)} alt={props.name} />
+        </>
     )
 }
 
