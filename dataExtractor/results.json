@@ -3,61 +3,55 @@
        {
           "name":"SALBUTAMOLO",
           "secondName":"Salbutamol",
-          "category":"RECETTORI BETA ADRENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI AGONISTA",
           "found":true
        },
        {
           "name":"INDACATEROLO",
           "secondName":"Indacaterol",
-          "category":"RECETTORI BETA ADRENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI AGONISTA",
           "found":true
        },
        {
           "name":"PROPRANOLOLO",
           "secondName":"Propranolol",
-          "category":"RECETTORI BETA ADRENERGICI",
+          "category":"RECETTORI BETA ADRENERGICI ANTAGONISTA BLOCCANTE",
           "found":true
        },
        {
           "name":"ATENOLOLO",
           "secondName":"Atenolol",
-          "category":"RECETTORI BETA ADRENERGICI",
-          "found":true
-       },
-       {
-          "name":"MISOPROSTOLO",
-          "secondName":"Misoprostol",
-          "category":"ANTINFIAMMATORI",
+          "category":"RECETTORI BETA ADRENERGICI ANTAGONISTA BLOCCANTE",
           "found":true
        },
        {
           "name":"PARACETAMOLO",
           "secondName":"Acetaminophen",
-          "category":"ANTINFIAMMATORI",
+          "category":"ANTINFIAMMATORI FANS",
           "found":true
        },
        {
           "name":"ACIDO SALICILICO",
           "secondName":"Salicylic acid",
-          "category":"ANTINFIAMMATORI",
+          "category":"ANTINFIAMMATORI FANS",
           "found":true
        },
        {
           "name":"ASPIRINA",
           "secondName":"Aspirin",
-          "category":"ANTINFIAMMATORI",
+          "category":"ANTINFIAMMATORI FANS",
           "found":true
        },
        {
           "name":"CORTISOLO",
           "secondName":"Hydrocortisone",
-          "category":"ANTINFIAMMATORI",
+          "category":"ANTINFIAMMATORI SAIDS",
           "found":true
        },
        {
           "name":"BETAMETASONE",
           "secondName":"Betamethasone",
-          "category":"ANTINFIAMMATORI",
+          "category":"ANTINFIAMMATORI SAIDS",
           "found":true
        },
        {
@@ -147,7 +141,7 @@
        {
          "name":"DIAZEPAM",
          "secondName":"Diazepam",
-         "category":"",
+         "category":"BENZODIAZEPINE",
          "found":true
        },
        {
@@ -261,25 +255,31 @@
        {
           "name":"ISOPROTERENOLO",
           "secondName":"Isoprenaline",
-          "category":"",
+          "category":"RECETTORI BETA ADRENERGICI AGONISTA",
           "found":true
        },
        {
           "name":"FENOXIBENZAMMINA",
           "secondName":"Phenoxybenzamine",
-          "category":"",
+          "category":"RECETTORI ALFA ADRENERGICI ANTAGONISTA BLOCCANTE",
           "found":true
        },
        {
           "name":"DOXORUBRICINA",
           "secondName":"Doxorubicin",
-          "category":"",
+          "category":"ANTIBIOTICO",
           "found":true
        },
        {
          "name":"WARFARINA",
          "secondName":"Warfarin",
-         "category":"",
+         "category":"ANTICOAGULANTE",
+         "found":true
+       },
+       {
+         "name":"FENITOINA",
+         "secondName":"Phenytoin",
+         "category":"ANTIEPILETTICO",
          "found":true
       }
     ]
